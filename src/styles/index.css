@@ -29,12 +29,16 @@
 }
 .xMark {
     display: none;
-    position: absolute;
-    margin-left: 53rem;
     color: brown;
 }
 .taskBox:hover > .xMark {
     display: block;
+}
+.defaultTask {
+    font-size: 2rem;
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: 1px solid gainsboro;
 }
 #inputTask {
     width: 80%;

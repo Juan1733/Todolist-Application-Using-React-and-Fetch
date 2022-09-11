@@ -3,30 +3,30 @@ import { Task } from "./Task.jsx";
 
 export const Todos = () => {
 
-    const [tasks, setTasks] = useState(["No hay tareas, añadir tareas"]);
+    const [tasks, setTasks] = useState([]);
     const [inputValue, setInputValue ] = useState('');
     let items = tasks.length;
 
     function addTask(e) {
         if (e.code == "Enter") {
-            setTasks((prev) => {
-                return ([...prev, inputValue])
-            })
+            if (inputValue != "") {
+                setInputValue("")
+                setTasks((prev) => {
+                    return ([...prev, inputValue])
+                })
+            }
         }
     }
 
     function removeDefault() {
 
-        if (tasks[0] == "No hay tareas, añadir tareas") {
-            items = 0
-        }
-
         if (tasks.length == 0) {
-            setTasks((prev) => {
-                prev.push("No hay tareas, añadir tareas")
-                items = 0
-                return prev
-            })
+            items = 0
+            return(
+                <div className="defaultTask bg-light text-secondary px-5 py-2 text-start align-items-center">
+                    <h3 className="fw-light m-0 col-10">No hay tareas, añadir tareas</h3>
+                </div>
+            )
         }
 
         if (tasks.length == 2 && (tasks[0] == "No hay tareas, añadir tareas")) {
@@ -49,7 +49,7 @@ export const Todos = () => {
             />         
             {removeDefault()}   
             {              
-                tasks.map((item, index) => {return <Task text={item} key={index} tasks={tasks} setTasks={setTasks}/>})
+                tasks.map((item, index) => {return <Task text={item} key={index} tasks={tasks} setTasks={setTasks} index={index}/>})
             }      
             <div className="bg-secondary todos my-3 text-start">
                 {items} item left
