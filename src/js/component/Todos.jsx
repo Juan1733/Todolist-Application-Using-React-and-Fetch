@@ -51,8 +51,9 @@ export const Todos = () => {
             {              
                 tasks.map((item, index) => {return <Task text={item} key={index} tasks={tasks} setTasks={setTasks} index={index}/>})
             }      
-            <div className="bg-secondary todos my-3 text-start">
+            <div className="bg-secondary todos my-3 text-start d-flex justify-content-between">
                 {items} item left
+                <button type="button" class="btn btn-dark">Clean all</button>
             </div>
         </div>
     )
