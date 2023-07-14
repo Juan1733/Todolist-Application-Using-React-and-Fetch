@@ -11,9 +11,11 @@ export const Task = (props) => {
             <FontAwesomeIcon icon={faXmark} className="xMark col-1" onClick={() => {
 
                 props.setTasks((prev) => {
+                    prev[props.index].done = true
                     prev.splice(props.index, 1)
+                    props.updateTasks()
                     return([...prev])
-                })
+                })                
             }}
             />
         </div>
